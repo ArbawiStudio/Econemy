@@ -7,6 +7,8 @@ module.exports = {
     run: async(client, TOBZiCoder, args) => {
 
         let user = TOBZiCoder.mentions.users.first() || TOBZiCoder.author;
+        
+        if(user.bot) return TOBZiCoder.channel.send(`:robot: **| ${TOBZiCoder.author.username}, bots do not have credits!**`)
 
         let credits = await db.fetch(`TBANK_${user.id}`)
 
